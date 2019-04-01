@@ -1,3 +1,17 @@
+/******************************************************************************
+ *  Execution        :   1. default node         cmd> node server.js 
+ *  Purpose          :Build the connection to the database 
+ *
+ *  @file            : server.js
+ *  @overview        : Define connection to the database 
+ *  @author          : Shubhangi shegokar
+ *  @version         : 1.0
+ *  @since           : 30/03/2019
+ *
+ ******************************************************************************/
+/**
+ * require the required file
+ */
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./Routes/routes');
