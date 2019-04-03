@@ -1,0 +1,23 @@
+<div class="col-md-6 col-md-offset-3">
+    <link rel="stylesheet" href="./css/style.css">
+    <h4 style="text-align:center;color:blue">Login</h4>
+    <form name="form" ng-submit="log.login()" >
+
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="form-control" ng-model="log.username" required
+            placeholder="Enter Email ID" />
+
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" ng-model="log.password" required
+            placeholder="Enter Password" />
+
+
+        <div class="form-actions" layout="row">
+            <button type="submit" ng-disabled="form.$invalid || log.dataLoading" >Login</button>
+
+            <span style="float:right">Not a member?<a href="register.html" >Register</a></span>
+            <a href="/#/forgotPassword.html" >Forgot Password</a>
+        </div>
+    </form>
+</div>

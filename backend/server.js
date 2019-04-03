@@ -16,7 +16,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./Routes/routes');
 
-
 // create express app
 const app = express();
 
@@ -26,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 app.use('/', router);
+ app.use(express.static('./frontEnd'));
+
+ 
 // Configuring the database
 const dbConfig = require('./config/db.config');
 const mongoose = require('mongoose');
@@ -41,7 +43,6 @@ mongoose.connect(dbConfig.url, {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
-
 
 // define a simple route
 app.get('/', (req, res) => {
