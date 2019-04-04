@@ -1,3 +1,5 @@
+// import { url } from "inspector";
+
 /******************************************************************************
  *  Execution        :   1. default node         cmd> node resetController.js 
  *  Purpose          : Initialize the data and give the path where to go
@@ -12,22 +14,20 @@
 /**
  * require the required file
  */
-app.controller('resetController',function($scope,$location,resetService){
-    $scope.resetPassword=function(){
-        var data ={
-            
-            'newPassword':$scope.newPassword,
-            'confirmPassword' :$scope.confirmPassword,
+app.controller('resetController', function ($scope, $location, resetService, $routeParams) {
+    $scope.resetPassword = function () {
+        $scope.token = $routeParams.token;
+
+        console.log('token', $routeParams.token)
+        var data = {
+
+            'Password': $scope.Password
+
         }
-        $scope.go=function(path){
-            $location.path("/resetPassword");
-        };
-        $scope.go2=function(path)
-        {
-            $location.path("/login");
+        $scope.go2 = function (path) {
+            $location.path("/#/login");
         };
         console.log(data);
-        resetService.resetPassword(data);
+        resetService.resetPassword($scope, data);
     }
-}); 
-   
+});

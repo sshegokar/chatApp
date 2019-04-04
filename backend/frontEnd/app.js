@@ -3,7 +3,7 @@ var app = angular.module('app', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
 
-  .when("/", {
+  .when("/login", {
     templateUrl : "/template/login.html",
     controller : "loginController"
   })
@@ -12,12 +12,12 @@ app.config(function($routeProvider) {
     controller : "registerController"
   })
 
-  .when("/resetPassword", {
-    templateUrl : "template/resetPassword.html",
+  .when("/resetPassword/:token", {
+    templateUrl : "/template/resetPassword.html",
     controller : "resetController"
   })
   .when("/forgotPassword", {
-    templateUrl : "template/forgotPassword.html",
+    templateUrl : "/template/forgotPassword.html",
     controller : "forgotController"
   });
 });

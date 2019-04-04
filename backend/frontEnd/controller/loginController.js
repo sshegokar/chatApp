@@ -3,7 +3,7 @@
  *  Purpose          : Initialize the data and give the path where to go
  *
  *  @file            : loginController.js
- *  @overview        : where is going the next define the path
+ *  @overview        : ChatApplication
  *  @author          : Shubhangi shegokar
  *  @version         : 1.0
  *  @since           : 01/04/2019
@@ -12,24 +12,23 @@
 /**
  * require the required file
  */
-app.controller('loginController', function ($scope, $location) {
+app.controller('loginController', function ($scope, $location,loginService) {
     $scope.login = function () {
         var data = {
 
             'email': $scope.email,
             'password': $scope.password,
         }
-        console.log("email at login contrioller--22", email);
-
-        $scope.go = function (path) {
-            $location.path("/login");
-        };
-        $scope.go2 = function (path) {
-            $location.path("/forgotPassword");
-        };
+       
         console.log(data);
         loginService.login(data);
     }
+    $scope.go = function (path) {
+        $location.path("/login");
+    };
+    $scope.go2 = function (path) {
+        $location.path("/forgotPassword");
+    };
 }
 );
 

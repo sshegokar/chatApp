@@ -23,8 +23,8 @@ var transporter = nodemailer.createTransport({
 });
 //define the who send the details with whom with message
 var mailOptions = {
-  from: 'shegokarshubhangi10@gmail.com',
-  to: 'shegokarshubhangi10@gmail.com',
+  from: process.env.email,
+  to: process.env.email,
   subject: 'Sending Email using Node.js',
   text :  url
 };

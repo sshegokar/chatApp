@@ -41,11 +41,12 @@ user_model.prototype.save = ((data, callback) => {
         }
         else {
             //checking user registered or not if not save the user data
-            if (result != null) {
+            if (result !== null) {
                 callback('email already registered');
             } else {
-                data.password = bcrypt.hashSync(data.password, saltRounds)
-                const register_model = new register(data);
+            data.password = bcrypt.hashSync(data.password, saltRounds)
+
+                const register_model =new user(data);
                 register_model.save((err, result) => {
                     if (err) {
                         callback(err);

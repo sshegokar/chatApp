@@ -12,19 +12,21 @@
 /**
  * require the required file
  */
-    app.controller('registerController',function($scope,$location,$registerService){
+    app.controller('registerController',function($scope,$location,registerService){
         $scope.register=function(){
             var data ={
                 'firstName':$scope.firstName,
                 'lastName':$scope.lastName,
                 'email':$scope.email,
                 'password' :$scope.password,
-                'confirmPassword':$scope.confirmPassword
             }
+            console.log("ikhihi9hoiihj", data);
+            registerService.register(data,$scope);
+        }
             $scope.go=function(path){
                 $location.path("/login");
             };
-            console.log(data);
-            registerService.register(data);
-        }
+            
+           
+        
     });

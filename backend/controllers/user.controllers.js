@@ -35,6 +35,8 @@ exports.registerController = (req, res) => {
         })
     }
     catch (e) {
+        console.log("Error");
+        
 
     }
 }
@@ -78,9 +80,9 @@ exports.forgetPassController = (req, res) => {
              * @method  GenerateToken form file middleWare
              */
             const obj = utility.GenerateToken(payload);
-            const url = `http://locahost:3000/#!/resetPassword/${obj.token}`;
+            const url = `http://localhost:3000/#/resetPassword/${obj.token}`;
             send.sendEmailFunction(url)
-            res.status(200).send(url);
+            res.status(200).send(result);
 
         }
     })

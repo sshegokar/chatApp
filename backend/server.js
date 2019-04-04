@@ -18,6 +18,7 @@ const router = require('./Routes/routes');
 
 // create express app
 const app = express();
+require('dotenv').config()
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
