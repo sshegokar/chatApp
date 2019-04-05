@@ -75,3 +75,16 @@ exports.resetPassService = (data, callback) => {
         }
     })
 }
+exports.getAllService = ( callback) => {
+    /**
+     * @method getAllService to verify the data 
+     */
+    userModel.getAllUsers( (err, result) => {
+        if (err) {
+            callback(err);
+        }
+        else {
+            callback(null, result)
+        }
+    })
+}

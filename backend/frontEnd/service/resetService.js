@@ -14,6 +14,7 @@
  */
 app.service('resetService',function($http){
     this.resetPassword=function(data,$scope){
+        console.log("data at  service: ",data);
         
         $http({
             method :'POST',
@@ -24,7 +25,7 @@ app.service('resetService',function($http){
             }
         }).then(
             function successCallback(response){
-                console.log("responce",response); 
+                console.log("response",response); 
                                       
             },
             function errorCallaback(error){

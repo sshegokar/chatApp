@@ -72,31 +72,8 @@ button:hover {
     border-style: solid;
   
 }
-.butto{
-  padding: 8px;
-  margin-top: 400px;
-  margin-left: 536px;
-  width: 545px;
-  border-style: solid;
 
-}
 /* Add padding to container elements */
-.container1 {
-  padding: 8px;
-  margin-top: 0px;
-  margin-right: 0px;
-
-}
-.text {
-  padding: 8px;
-  margin-top: 400px;
-  margin-left: 536px;
-  width: 545px;
-  border-style: solid;
-
-
-}
-
 
 .container {
   padding: 8px;
@@ -118,41 +95,8 @@ button:hover {
     padding: 50px;
     border: 1px solid red;
   }
-.sidebar{
-overflow: auto;
-max-height: 100%;
-height: 100%;
-transition-property: top,bottom;
-transition-duration: .2s,.2s;
-transition-timing-function: linear,linear;
-  }
-.main-panel {
-  background-color: #f4f3ef;
-  position: absolute;
-  z-index: 2;
-  float: right;
-  width: 20%;
-  height: 340px;
-  padding: 41px;
-  margin-left: -55px;
-  border-style: solid;
-  
-  }
-  .main-panel1 {
-    background-color: #f4f3ef;
-    position: absolute;
-    z-index: 2;
-    float: right;
-    width: 23%;
-    height: 0px;
-    padding: 196px;
-    margin-right: 1000px;
-    margin-left: 535px;
-    
-    border-style: solid;
-    
-  }
-  
+
+
 
 /* Change styles for button and signup button on extra small screens */
 @media screen and (max-width: 150px) {

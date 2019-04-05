@@ -82,7 +82,7 @@ exports.forgetPassController = (req, res) => {
             const obj = utility.GenerateToken(payload);
             const url = `http://localhost:3000/#/resetPassword/${obj.token}`;
             send.sendEmailFunction(url)
-            res.status(200).send(result);
+            res.status(200).send(obj);
 
         }
     })
@@ -100,5 +100,24 @@ exports.resetPassController = (req, res) => {
                 data: data
             })
         }
+    })
+}
+exports.getAllController=(req,res) =>{
+    var responseResult={}
+    //validate request
+    userService.getAllService(req.body,(err,data)=>{
+        if(err){
+            responseResult.success=false;
+            return res.status(400).send({
+                error:err
+            });
+        }
+        else{
+            responseResult.success=true;
+            return res.status(200).send({
+                data:data
+            })
+        }
+
     })
 }

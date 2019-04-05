@@ -21,13 +21,15 @@ app.controller('resetController', function ($scope, $location, resetService, $ro
         console.log('token', $routeParams.token)
         var data = {
 
-            'Password': $scope.Password
+            'password': $scope.password
 
         }
-        $scope.go2 = function (path) {
-            $location.path("/#/login");
-        };
-        console.log(data);
+        console.log("data after password submission: ", data);
+        
+        // $scope.go2 = function (path) {
+        //     $location.path("/#/login");
+        // };
+        // console.log(data);
         resetService.resetPassword($scope, data);
     }
 });

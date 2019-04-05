@@ -103,21 +103,29 @@ user_model.prototype.forget = ((data, callback) => {
 //update the user password 
 user_model.prototype.resetPassword = ((data, callback) => {
     var pass = bcrypt.hashSync(data.password, saltRounds)
-
-    user.updateOne({ password: pass },
-
-
+    console.log(pass);
+    user.updateOne({},{ password: pass },
         (err, result) => {
             if (err) {
-
                 callback(err);
             }
             else {
                 console.log("Reseted your Password");
-                return callback(null, data)
+                callback(null,result)
             }
         })
 })
+user_model.prototype.getAllUsers = (callback) => {
+    user.find({},(err,result)=>{
+        if(err){
+            return callback(err);
+        }else{
+            console.log("data",result);
+
+           return callback(null,result);
+        }
+    });
+}
 
 
 
