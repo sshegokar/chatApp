@@ -1,4 +1,4 @@
-// var app = angular.module("app", ["ngRoute"]);
+
 var app = angular.module('app', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
@@ -19,5 +19,14 @@ app.config(function($routeProvider) {
   .when("/forgotPassword", {
     templateUrl : "/template/forgotPassword.html",
     controller : "forgotController"
+  })
+  .when("/homePage", {
+    templateUrl : "/template/homePage.html",
+    controller : "homeController"
   });
 });
+app.service('SocketService', ['socketFactory', function SocketService(socketFactory) {
+  return socketFactory({
+  ioSocket: io.connect('http://localhost:3000')
+  });
+  }]);

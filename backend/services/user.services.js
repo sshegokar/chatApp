@@ -69,18 +69,20 @@ exports.resetPassService = (data, callback) => {
             callback(err);
         }
         else {
-            console.log("services:::", result);
+            console.log("services:", result);
 
             callback(null, result)
         }
     })
 }
-exports.getAllService = ( callback) => {
+exports.getAllService = (callback) => {
     /**
      * @method getAllService to verify the data 
      */
-    userModel.getAllUsers( (err, result) => {
+    userModel.getAllUsers((err, result) => {
         if (err) {
+            console.log(result);
+            
             callback(err);
         }
         else {

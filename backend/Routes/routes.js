@@ -23,7 +23,7 @@ router.post('/login', user.loginController);
 router.post('/forgetPassword', user.forgetPassController);
 router.post('/resetPassword', token.checkToken, user.resetPassController);
 router.get('/getAllUser', user.getAllController);
-router.post('/addMessage', chat.chatController);
+
 
 
 

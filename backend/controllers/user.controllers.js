@@ -36,7 +36,7 @@ exports.registerController = (req, res) => {
     }
     catch (e) {
         console.log("Error");
-        
+
 
     }
 }
@@ -102,20 +102,20 @@ exports.resetPassController = (req, res) => {
         }
     })
 }
-exports.getAllController=(req,res) =>{
-    var responseResult={}
+exports.getAllController = (req, res) => {
+    var responseResult = {}
     //validate request
-    userService.getAllService(req.body,(err,data)=>{
-        if(err){
-            responseResult.success=false;
+    userService.getAllService((err, data) => {
+        if (err) {
+            responseResult.success = false;
             return res.status(400).send({
-                error:err
+                error: err
             });
         }
-        else{
-            responseResult.success=true;
+        else {
+            responseResult.success = true;
             return res.status(200).send({
-                data:data
+                data: data
             })
         }
 
