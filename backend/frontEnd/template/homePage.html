@@ -1,28 +1,32 @@
-<html>
 
+<html>
+  
 <head>
+  
   <link rel="stylesheet" href="./css/style1.css">
 </head>
-<link rel="style" href="./css/style.css">
-<div class="main">
+
+<div class="main" ng-controller="homeController">
   <div class="register">
     <a href="#/login">Logout</a>
     <header>
-      <div class="container">
+      <div class="container" >
         <h1>welcome chat Aplication</h1>
       </div>
     </header>
   </div>
   <div class="main-panel">
 
-    <h1><div ng-show="getAllUser()"</h1>
+    <h3><div>User List</div></h3>
+<p ng-repeat="x in list" ng-click="value(x)" ng-show="x.firstName">
+{{x.firstName}}</p>
   </div>
   <div>
     <div class="main-panel1">
       <h1>chat</h1>
     </div>
     <div>
-      <input type="text" name="message" id="message" class="text" ng-model="message" placeholder="Type a message" />
+      <input1 type1="text" class="textbox" name="message" id="message"  ng-model="message" placeholder="Type a message" />
     </div>
     <div>
       <button type="submit" class="butto">Send</button>

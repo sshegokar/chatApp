@@ -1,4 +1,4 @@
-body {font-family: Arial, Helvetica, sans-serif;
+ body {font-family: Arial, Helvetica, sans-serif;
 }
 * {box-sizing: 100px
   }
@@ -11,7 +11,7 @@ body {
   }
 
 /* Full-width input fields */
- input[type=text], input[type=password] {
+input[type=text], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -95,8 +95,7 @@ button:hover {
     padding: 50px;
     border: 1px solid red;
   }
-
-
+  
 
 /* Change styles for button and signup button on extra small screens */
 @media screen and (max-width: 150px) {
@@ -104,4 +103,4 @@ button:hover {
      width: 50%;
   }
 }
-  
+    

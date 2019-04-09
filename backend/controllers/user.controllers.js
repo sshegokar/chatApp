@@ -45,17 +45,25 @@ exports.registerController = (req, res) => {
 exports.loginController = (req, res) => {
     // Validate request
     userService.loginService(req.body, (err, data) => {
+        var response={};
         if (err) {
-            return res.status(400).send({
-                error: err
-            });
+            response.status=false;
+            response.error=err;
+            return res.status(400).send(response);
         } else {
-            return res.status(200).send({
-                data: data
-            })
+            response.status=true;
+            response.result=data;
+            console.log("wsdre",data);
+            
+            // console.log("daat",res.data);
+            // console.log("daat",req.body);
+            //console.log("daat",res)
+            return res.status(200).send(response);
         }
     })
 }
+
+    
 //check the entered email correct or not
 exports.forgetPassController = (req, res) => {
     var responseResult = {}
@@ -114,6 +122,7 @@ exports.getAllController = (req, res) => {
         }
         else {
             responseResult.success = true;
+           
             return res.status(200).send({
                 data: data
             })

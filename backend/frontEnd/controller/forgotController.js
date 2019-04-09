@@ -15,6 +15,7 @@
  */
 app.controller('forgotController',function($scope,$location,forgotService){
     $scope.forgotPassword=function(){
+        try{
         var data ={
             
             'email':$scope.email,
@@ -30,5 +31,11 @@ app.controller('forgotController',function($scope,$location,forgotService){
         console.log(data);
         forgotService.forgotPassword(data);
     }
+    catch(e){
+        console.log(error);
+        
+    }
+    }
+
 }); 
    

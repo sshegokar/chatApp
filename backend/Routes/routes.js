@@ -16,7 +16,6 @@ const express = require('express');
 var token = require('../middleWare/auth')
 const router = express.Router();
 const user = require('../controllers/user.controllers.js');
-const chat = require('../controllers/chat.controller')
 
 router.post('/register', user.registerController);
 router.post('/login', user.loginController);

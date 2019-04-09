@@ -12,7 +12,9 @@
 /**
  * require the required file
  */
+const http =require('http');
 const express = require('express');
+const SocketIO = require('socket.io');
 const bodyParser = require('body-parser');
 const router = require('./Routes/routes');
 var chatControl=require('./controllers/chat.controller')
@@ -20,6 +22,8 @@ var chatControl=require('./controllers/chat.controller')
 
 // create express app
 const app = express();
+const server=http.createServer(app);
+var io=SocketIO(server);
 require('dotenv').config()
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -29,13 +33,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use('/', router);
 app.use(express.static('./frontEnd'));
-
+// const io=require('socket.io').createServer(server)
 
 // Configuring the database
 const dbConfig = require('./config/db.config');
 const mongoose = require('mongoose');
-const server=require('http').createServer(app)
-const io=require('socket.io').listen(server)
+// const server=require('http').createServer(app)
+// const io=require('socket.io').listen(server)
  
 mongoose.Promise = global.Promise;
 
@@ -53,17 +57,19 @@ mongoose.connect(dbConfig.url, {
 app.get('/', (req, res) => {
     res.json({ "message": "Welcome to chatApp" });
 });
+
+
 // listen for requests
-app.listen(3000, () => {
+server.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
 
-connections=[];
-io.sockets.on('connection', function (socket) {
-    connections.push(socket)
-    console.log('connected : %s sockect connected', connections.length);
+// var io = SocketIO(server);
+
+io.on('connection', (socket)=> {
+    console.log("new user connected");
     //incoming message form the client side
-    socket.on('newMsg', function (req) {
+    socket.on('data', function (req) {
         console.log("client sent msg :", req);
         chatControl.chatController(req,(err,data)=>{
             if(err)
@@ -73,7 +79,7 @@ io.sockets.on('connection', function (socket) {
             else{
                 console.log('message save result on server.js',data);
                 //sending responce message to the client 
-                socket.emit('emitMessage',data);
+                socket.emit('data',data);
                 
             }
         })

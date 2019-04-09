@@ -12,31 +12,21 @@
 /**
  * require the required file
  */
-app.service('homeService',function($http){
-    this.getAllUser=function(data){
-        
-        
+app.service('homeService', function ($http, ) {
+    this.getAllUser = function ($scope) {
         $http({
-            method :'GET',
-            url :'http://localhost:3000/getAllUser',
-            data :data,
+            method: 'GET',
+            url: 'http://localhost:3000/getAllUser',
         }).then(
-            function successCallback(response){
-               
-             
-                var userid=response.data._id;
-                var firstName=response.data.firstName
-                // localStrorage.setItem("firstName",firstName);
-                // localStrorage.setItem("userid",userid);
-                
-                
-               
+            function successCallback(response) {
+                $scope.list = response.data.data;
+                console.log("response", response.data.data[0]);
+                console.log(response);
+                console.log(response.data.data[0].firstName);
             },
-            function errorCallaback(error){
+            function errorCallaback(error) {
                 console.log("Invalid username");
                 console.log(error);
-                getAllUserMessage='EmaiId or Password Incorrect';
-                
             }
         );
     }

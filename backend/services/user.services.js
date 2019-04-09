@@ -29,19 +29,22 @@ exports.registerService = (data, callback) => {
     })
 }
 //define the register services verify the request
-exports.loginService = (data, callback) => {
+exports.loginService = (req, callback) => {
     /**
      * @method login to verify the result 
      */
-    userModel.login(data, (err, result) => {
+    userModel.login(req, (err, result) => {
         if (err) {
             callback(err);
         }
         else {
-            callback(null, result)
+            console.log("sfse",result);
+            
+          return  callback(null, result)
         }
     })
 }
+
 //define the register services verify the request
 exports.forgetService = (data, callback) => {
     /**

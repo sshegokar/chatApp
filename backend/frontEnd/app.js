@@ -1,5 +1,7 @@
 
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute','btford.socket-io']);
+//import io from 'socket.io-client';
+
 app.config(function($routeProvider) {
   $routeProvider
 

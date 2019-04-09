@@ -44,9 +44,9 @@ user_model.prototype.save = ((data, callback) => {
             if (result !== null) {
                 callback('email already registered');
             } else {
-            data.password = bcrypt.hashSync(data.password, saltRounds)
+                data.password = bcrypt.hashSync(data.password, saltRounds)
 
-                const register_model =new user(data);
+                const register_model = new user(data);
                 register_model.save((err, result) => {
                     if (err) {
                         callback(err);
@@ -63,6 +63,7 @@ user_model.prototype.save = ((data, callback) => {
 })
 //find the user already present or not if user is present login the board.
 user_model.prototype.login = (body, callback) => {
+    console.log("ertgr",body);
     user.findOne({
         "email": body.email
     }, (err, data) => {
@@ -70,14 +71,16 @@ user_model.prototype.login = (body, callback) => {
         if (err) {
             callback(err);
         } else if (data != null) {
-// compare the encrypted password using comapare method 
-            bcrypt.compare(body.password, data.password).then(function (res) {
-                if (res) {
-                    console.log("login succesfully");
-                    callback(null, res);
+            console.log("ghre",data);
+            
+            // compare the encrypted password using comapare method 
+            bcrypt.compare(body.password, data.password, function (err, result) {
+                if (err) {
+                    return callback(err)
                 } else {
-                    console.log("Incorrect password");
-                    callback("Incorrect password");
+                    console.log("login successfully",data);
+                    
+                    callback(null,data);
                 }
             });
         } else {
@@ -86,6 +89,11 @@ user_model.prototype.login = (body, callback) => {
         }
     })
 }
+
+
+
+
+
 //find the user already present or not
 user_model.prototype.forget = ((data, callback) => {
     user.findOne({
@@ -104,25 +112,25 @@ user_model.prototype.forget = ((data, callback) => {
 user_model.prototype.resetPassword = ((data, callback) => {
     var pass = bcrypt.hashSync(data.password, saltRounds)
     console.log(pass);
-    user.updateOne({},{ password: pass },
+    user.updateOne({}, { password: pass },
         (err, result) => {
             if (err) {
                 callback(err);
             }
             else {
                 console.log("Reseted your Password");
-                callback(null,result)
+                callback(null, result)
             }
         })
 })
 user_model.prototype.getAllUsers = (callback) => {
-    user.find({},(err,result)=>{
-        if(err){
+    user.find({}, (err, result) => {
+        if (err) {
             return callback(err);
-        }else{
-            console.log("data",result);
+        } else {
+            console.log("data", result);
 
-           return callback(null,result);
+            return callback(null, result);
         }
     });
 }

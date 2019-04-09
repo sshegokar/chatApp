@@ -12,36 +12,29 @@
 /**
  * require the required file
  */
-app.service('loginService',function($http){
-    this.login=function(data){
-        
-        
+app.service('loginService', function ($http) {
+    this.login = function (data,$location) {
         $http({
-            method :'POST',
-            url :'http://localhost:3000/login',
-            data :data,
+            method: 'POST',
+            url: 'http://localhost:3000/login',
+            data: data,
         }).then(
-            function successCallback(response){
-               
+            function successCallback(response) {
                 console.log("Login successfull at loginService in client side");
-                var userid=response.data._id;
-                var fName=response.data.firstName
-              
-                
-                var email=response.data.email;
-                var token=response.data.token;
-                localStrorage.setItem("userid",userid);
-                localStrorage.setItem("fName",fName);
-                localStrorage.setItem("email",email);
-                localStrorage.setItem("token",token);
-                
-               
+               var userid = response.data.data._id;
+               var fName = response.data.data.firstName
+               var email = response.data.data.email;
+               var token = response.data.token;
+               localStrorage.setItem("userid", userid);
+                localStrorage.setItem("fName", fName);
+                localStrorage.setItem("email", email);
+                localStrorage.setItem("token", token);
+                $location.path("homePage")
             },
-            function errorCallaback(error){
+            function errorCallaback(error) {
                 console.log("register Unsuccessful please check your details");
                 console.log(error);
-                loginMessage='EmaiId or Password Incorrect';
-                
+                loginMessage = 'EmaiId or Password Incorrect';
             }
         );
     }

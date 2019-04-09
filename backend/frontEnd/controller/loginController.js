@@ -19,16 +19,16 @@ app.controller('loginController', function ($scope, $location,loginService) {
             'email': $scope.email,
             'password': $scope.password,
         }
+        localStorage.getItem('email',data.email);
+        localStorage.getItem('password',data.password);
        
         console.log(data);
-        loginService.login(data);
+        loginService.login(data,$location);
     }
     $scope.go = function (path) {
-        $location.path("/login");
-    };
-    $scope.go2 = function (path) {
-        $location.path("/forgotPassword");
-    };
+        $location.path("homePage");
+  };
+    
 }
 );
 
