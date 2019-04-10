@@ -78,7 +78,7 @@ user_model.prototype.login = (body, callback) => {
                 if (err) {
                     return callback(err)
                 } else {
-                    console.log("login successfully",data);
+                  //  console.log("login successfully",data);
                     
                     callback(null,data);
                 }
@@ -128,7 +128,7 @@ user_model.prototype.getAllUsers = (callback) => {
         if (err) {
             return callback(err);
         } else {
-            console.log("data", result);
+          //  console.log("data", result);
 
             return callback(null, result);
         }

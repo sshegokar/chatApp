@@ -41,11 +41,13 @@ function chat_model() {
 }
 //validate the data and save the data 
 chat_model.prototype.save = ((data, callback) => {
+    console.log(data);
+    
     const chatInfo = new chat({
         'senderId': data.senderId,
-        'receiverId': data.receiverId,
+         'receiverId': data.receiverId,
         'message': data.message
-
+ 
     })
     chatInfo.save((err, result) => {
         if (err) {
@@ -56,6 +58,19 @@ chat_model.prototype.save = ((data, callback) => {
             return callback(null, result);
         }
     })
+    
+    
 })
+chat_model.prototype.getAllMsg = (req,callback) => {
+    chat.find({}, (err, result) => {
+        if (err) {
+            return callback(err);
+        } else {
+          //  console.log("data", result);
+
+            return callback(null, result);
+        }
+    });
+}
 module.exports = new chat_model;
 

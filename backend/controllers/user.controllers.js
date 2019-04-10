@@ -53,7 +53,7 @@ exports.loginController = (req, res) => {
         } else {
             response.status=true;
             response.result=data;
-            console.log("wsdre",data);
+            console.log("data ",response);
             
             // console.log("daat",res.data);
             // console.log("daat",req.body);

@@ -69,9 +69,9 @@ server.listen(3000, () => {
 io.on('connection', (socket)=> {
     console.log("new user connected");
     //incoming message form the client side
-    socket.on('data', function (req) {
-        console.log("client sent msg :", req);
-        chatControl.chatController(req,(err,data)=>{
+    socket.on('data', function (data) {
+        console.log("client sent msg :",data);
+        chatControl.chatController(data,(err,data)=>{
             if(err)
             {
                 console.log("err on server.js when receive message save via controller",err);
@@ -80,6 +80,8 @@ io.on('connection', (socket)=> {
                 console.log('message save result on server.js',data);
                 //sending responce message to the client 
                 socket.emit('data',data);
+                
+                
                 
             }
         })

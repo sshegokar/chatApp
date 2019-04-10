@@ -14,14 +14,17 @@
  */
 const express = require('express');
 var token = require('../middleWare/auth')
-const router = express.Router();
 const user = require('../controllers/user.controllers.js');
+const chat=require('../controllers/chat.controller')
+const router = express.Router();
+
 
 router.post('/register', user.registerController);
 router.post('/login', user.loginController);
 router.post('/forgetPassword', user.forgetPassController);
 router.post('/resetPassword', token.checkToken, user.resetPassController);
 router.get('/getAllUser', user.getAllController);
+router.get('/getAllMsg',chat.getMsgController);
 
 
 

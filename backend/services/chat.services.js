@@ -28,3 +28,18 @@ exports.chatService = (data, callback) => {
         }
     })
 }
+exports.getMsgService = (req,callback) => {
+    /**
+     * @method getMsgService to verify the data 
+     */
+    chatModel.getAllMsg(req,(err, result) => {
+        if (err) {
+            console.log(result);
+            
+            callback(err);
+        }
+        else {
+            callback(null, result)
+        }
+    })
+}

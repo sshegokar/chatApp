@@ -20,16 +20,14 @@ app.service('loginService', function ($http) {
             data: data,
         }).then(
             function successCallback(response) {
-                console.log("Login successfull at loginService in client side");
-               var userid = response.data.data._id;
-               var fName = response.data.data.firstName
-               var email = response.data.data.email;
-               var token = response.data.token;
-               localStrorage.setItem("userid", userid);
-                localStrorage.setItem("fName", fName);
-                localStrorage.setItem("email", email);
-                localStrorage.setItem("token", token);
-                $location.path("homePage")
+               // console.log("Login successfull at loginService in client side",response);
+                //var userid = response.data.data.result._id;
+            // var email = response.data.data.result.email;
+              
+              //   localStrorage.setItem("userid", userid);
+            //      localStrorage.setItem("fName", fName);
+            //     localStrorage.setItem("email", email);
+                $location.path("/homePage")
             },
             function errorCallaback(error) {
                 console.log("register Unsuccessful please check your details");

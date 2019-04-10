@@ -15,24 +15,45 @@
  */
 var chatService = require('../services/chat.services');
 // Create and Save a new user
-exports.chatController = (req, res) => {
+exports.chatController = (req, callback) => {
     // Validate request
-    // try {
-        chatService.chatService(req.body, (err, data) => {
+    try {
+       
+        chatService.chatService(req, (err, data) => {
+            
             if (err) {
-                return res.status(400).send({
-                    error: err
-                });
+                callback(err)
+                
             } else {
-                return res.status(200).send({
-                    data: data
-                })
+                console.log("controller data",data);
+                
+                callback(null,data)
             }
         })
-    //}
-    // catch (e) {
-    //     console.log("Error");
+    }
+    catch (e) {
+        console.log("Error");
         
 
-    // }
+    }
+}
+exports.getMsgController = (req, res) => {
+    var responseResult = {}
+    //validate request
+    chatService.getMsgService(req ,(err, data) => {
+        if (err) {
+            responseResult.success = false;
+            return res.status(400).send({
+                error: err
+            });
+        }
+        else {
+            responseResult.success = true;
+           
+            return res.status(200).send({
+                data: data
+            })
+        }
+
+    })
 }

@@ -1,35 +1,150 @@
-
 <html>
-  
-<head>
-  
-  <link rel="stylesheet" href="./css/style1.css">
-</head>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
+  * {
+    box-sizing: 100px
+  }
+
+  .body1 {
+    width: 100px;
+    height: 150px;
+    padding: 50px;
+  }
+
+  .main {
+    width: 1123px;
+    height: 584px;
+    padding-right: -69px;
+    margin-top: -54px;
+    border-style: solid;
+
+  }
+
+  .textbox {
+    margin-top: 407px;
+    margin-left: 550px;
+    width: 36%;
+    height: auto;
+  }
+
+  .register {
+    background-color: #4CAF50;
+    color: #9e7575;
+    padding: 37px 205px;
+    margin: 8px;
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-left: 1px;
+    border: none;
+    cursor: pointer;
+    width: 705px;
+    opacity: 0.9;
+    border-style: solid;
+  }
+
+  .butto {
+    padding: 6px;
+    margin-top: -39px;
+    margin-left: 963px;
+    width: 123px;
+    border-style: solid;
+    background-color: #4CAF50;
+    color: #130303;
+
+  }
+
+  .container1 {
+    padding: 8px;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+
+  .input1 {
+    width: 433px;
+    padding: 15px;
+    margin: 390px 0 22px 0;
+    display: inline-block;
+    border: none;
+    margin-left: 519px;
+    background: #f1f1f1;
+  }
+  
+
+  .container {
+    padding: 8px;
+    margin-top: -56px;
+    margin-right: 0px;
+    text-align: center;
+  }
+
+  .main-panel {
+    background-color: #f4f3ef;
+    position: absolute;
+    z-index: 2;
+    float: right;
+    width: 19%;
+    height: 340px;
+    padding: 41px;
+    margin-left: 40px;
+    border-style: solid;
+  }
+.message {
+  float: left;
+
+}
+
+  .main-panel1 {
+    background-color: #f4f3ef;
+    position: absolute;
+    float: right;
+    width: 168px;
+    height: 0px;
+    padding: 196px;
+    margin-right: 1000px;
+    margin-left: 518px;
+    border-style: solid;
+  }
+</style>
+
+<head>
+</head>
 <div class="main" ng-controller="homeController">
   <div class="register">
-    <a href="#/login">Logout</a>
+    <a href="#/login" ng-click="clear()">Logout</a>
     <header>
-      <div class="container" >
+      <div class="container">
         <h1>welcome chat Aplication</h1>
       </div>
     </header>
   </div>
   <div class="main-panel">
 
-    <h3><div>User List</div></h3>
-<p ng-repeat="x in list" ng-click="value(x)" ng-show="x.firstName">
-{{x.firstName}}</p>
+    <h3>
+      <div>User List</div>
+    </h3>
+    <p ng-repeat="x in list" ng-click="value(x)" ng-show=" x.firstName">
+      {{x.firstName}}</p>
   </div>
   <div>
     <div class="main-panel1">
-      <h1>chat</h1>
+      <nav>
+      <p>{{firstName}}</p>
+      <p class="message"></p>
+      <p ng-repeat="x in array" ng-click="person(x)" style="margin-left: 317px" style1="margin-top:-242px;">
+        {{x.message}}</p>
+      </nav>
     </div>
     <div>
-      <input1 type1="text" class="textbox" name="message" id="message"  ng-model="message" placeholder="Type a message" />
+      <input type="message" class="textbox" name="message" id="message" ng-model="message" placeholder="Type a message"
+        style="margin-top: 418px" style="margin-left: 516px">
+      {{x.message}}</p>
     </div>
     <div>
-      <button type="submit" class="butto">Send</button>
+      <button type="submit" class="butto" ng-click="send()">Send</button>
+
     </div>
   </div>
 </div>
