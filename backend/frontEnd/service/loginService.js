@@ -13,20 +13,20 @@
  * require the required file
  */
 app.service('loginService', function ($http) {
-    this.login = function (data,$location) {
+    this.login = function (data, $location) {
         $http({
             method: 'POST',
             url: 'http://localhost:3000/login',
             data: data,
         }).then(
             function successCallback(response) {
-               // console.log("Login successfull at loginService in client side",response);
+                // console.log("Login successfull at loginService in client side");
                 //var userid = response.data.data.result._id;
-            // var email = response.data.data.result.email;
-              
-              //   localStrorage.setItem("userid", userid);
-            //      localStrorage.setItem("fName", fName);
-            //     localStrorage.setItem("email", email);
+                // var email = response.data.data.result.email;
+
+                //   localStrorage.setItem("userid", userid);
+                //      localStrorage.setItem("fName", fName);
+                //     localStrorage.setItem("email", email);
                 $location.path("/homePage")
             },
             function errorCallaback(error) {

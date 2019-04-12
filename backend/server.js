@@ -4,9 +4,9 @@
  *
  *  @file            : server.js
  *  @overview        : Define connection to the database 
- *  @author          : Shubhangi shegokar
+ *  @author          : Shubhangi 
  *  @version         : 1.0
- *  @since           : 30/03/2019
+ *  @since           : 05/04/2019
  *
  ******************************************************************************/
 /**
@@ -33,15 +33,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use('/', router);
 app.use(express.static('./frontEnd'));
-// const io=require('socket.io').createServer(server)
+
 
 // Configuring the database
 const dbConfig = require('./config/db.config');
 const mongoose = require('mongoose');
-// const server=require('http').createServer(app)
-// const io=require('socket.io').listen(server)
+
  
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise; 
 
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
@@ -63,8 +62,6 @@ app.get('/', (req, res) => {
 server.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
-
-// var io = SocketIO(server);
 
 io.on('connection', (socket)=> {
     console.log("new user connected");

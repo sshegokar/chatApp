@@ -22,11 +22,11 @@ app.controller('forgotController',function($scope,$location,forgotService){
             
         }
         $scope.go=function(path){
-            $location.path("/#/forgotPassword");
+            $location.path("/forgotPassword");
         };
         $scope.go2=function(path)
         {
-            $location.path("/#/login");
+            $location.path("/login");
         };
         console.log(data);
         forgotService.forgotPassword(data);

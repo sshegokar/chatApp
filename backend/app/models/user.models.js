@@ -63,7 +63,7 @@ user_model.prototype.save = ((data, callback) => {
 })
 //find the user already present or not if user is present login the board.
 user_model.prototype.login = (body, callback) => {
-    console.log("ertgr",body);
+    // console.log("ertgr",body);
     user.findOne({
         "email": body.email
     }, (err, data) => {
@@ -71,7 +71,7 @@ user_model.prototype.login = (body, callback) => {
         if (err) {
             callback(err);
         } else if (data != null) {
-            console.log("ghre",data);
+           // console.log("ghre",data);
             
             // compare the encrypted password using comapare method 
             bcrypt.compare(body.password, data.password, function (err, result) {
